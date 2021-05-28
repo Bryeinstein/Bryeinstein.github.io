@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="DAM Bryan" />
+    <title>Projet Web DAM Bryan</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="shortcut icon"
+      href="favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Titre de la page -->
+    <h1 id="titre">Mécanique céleste</h1>
+    <!-- Div qui définie la zone d'animation -->
+    <div id="zone_anim">
+      <!-- Définition du canvas -->
+      <canvas
+        id="affichage"
+        width="800"
+        height="600"
+        style="border: 1px solid #ffffff"
+      ></canvas>
+
+      <div id="boite"> <!-- Div qui contient tous les contrôles -->
+        <h3 id="afficher_masquer" onclick="deroule(this)">
+          ↑ Afficher les contrôles
+        </h3>
+        <div id="parametres"> <!-- Div qui ne contient que le panneau de contrôle -->
+          <!-- element pour les particules -->
+          <h2 id="param_title">Particules</h2>
+          <p id="text_expl">
+            Pour ajouter des particules, double-cliquer dans le canvas. La
+            particule ajoutée aura les propriétés définies ci-dessous.
+          </p>
+          <!-- Formulaire  des contrôles -->
+          <form action="POST" >
+            <div id="lamasse">
+              <label for="masse">Masse :</label>
+              <input
+                type="range"
+                id="masse"
+                min="10"
+                max="500"
+                value="245"
+                oninput="document.getElementById('AffichageMasse').textContent=value"
+              />
+              <span id="AffichageMasse">245</span>
+            </div>
+            <div id="lacouleur">
+              <label for="couleur">Couleur :</label>
+              <input type="color" id="couleur" />
+            </div>
+          </form>
+        </div>
+
+        <div id="controles"> <!-- Div contenant les boutons qui démarre ou arrête l'animation -->
+          <button id="start" onclick="animer(this)">Démarrer</button>
+          <button id="stop" onclick="clearInterval(intervalID)">Arrêter</button>
+        </div>
+      </div>
+    </div>
+    <!-- PIED DE PAGE -->
+    <footer>
+      <p> © Brynn Corporation - All rights reserved. 2021 </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
